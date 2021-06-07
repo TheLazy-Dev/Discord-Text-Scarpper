@@ -13,4 +13,4 @@ def retrive_messages(channel_id):
             myfile.write("\n")
     
 
-retrive_messages('829019548190507048')
+retrive_messages('channel_ID')
