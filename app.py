@@ -43,30 +43,33 @@ def retrive_messages(code , channel_id):
 @app.route('/', methods=["GET", "POST"])
 def index():
     if request.method == 'POST':
-        print(request.form['parse_type'])
-        if request.form['parse_type'] == "formatted":
-            try:
-                auth_code  = request.form["code"]
-                cid = request.form["cid"]
-                formatted_messages(auth_code, cid)
-                print(auth_code)
-                print(cid)
-                return render_template('success.html')
+        try:
+            if request.form['parse_type'] == "formatted":
+                try:
+                    auth_code  = request.form["code"]
+                    cid = request.form["cid"]
+                    formatted_messages(auth_code, cid)
+                    print(auth_code)
+                    print(cid)
+                    return render_template('success.html')
 
-            except:
-                return render_template('error.html')
+                except:
+                    return render_template('error.html')
 
-        else:
-            try:
-                auth_code  = request.form["code"]
-                cid = request.form["cid"]
-                retrive_messages(auth_code, cid)
-                print(auth_code)
-                print(cid)
-                return render_template('success.html')
+            elif request.form['parse_type'] == "default":
+                try:
+                    auth_code  = request.form["code"]
+                    cid = request.form["cid"]
+                    retrive_messages(auth_code, cid)
+                    print(auth_code)
+                    print(cid)
+                    return render_template('success.html')
 
-            except:
-                return render_template('error.html')
+                except:
+                    return render_template('error.html')
+
+        except:
+            return render_template('radio_error.html')
 
     else:
         return render_template('index.html')
