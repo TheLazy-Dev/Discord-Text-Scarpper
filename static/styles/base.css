@@ -50,11 +50,16 @@ h1{
 }
 
 .control .btn{
+  margin-top: 50px;
   color: #fff;
   text-transform: uppercase;
-  background: crimson;
+  background: #4f5f98;
   opacity: .7;
   transition:opacity .3s ease;
+}
+
+.btn:hover{
+  opacity: .9;
 }
 
 .btn:focus{
