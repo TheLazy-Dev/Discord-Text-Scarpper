@@ -13,8 +13,12 @@ def retrive_messages(code , channel_id):
     jsonn   = json.loads(r.text)
 
     for value in jsonn:
-        with open(f'message_{channel_id}.txt' ,"a", encoding='utf-8') as myfile:
-            myfile.write(value['content'])
+        with open(f'Scraped Messages/message_{channel_id}.txt' ,"a", encoding='utf-8') as myfile:
+            user    = value['author']['username']
+            content = value['content']
+            message = f'{user} :\n{content}'
+            myfile.write(message)
+            myfile.write("\n")
             myfile.write("\n")
 #__________________________________________________
 
