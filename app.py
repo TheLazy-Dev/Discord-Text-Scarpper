@@ -7,19 +7,24 @@ app = Flask(__name__)
 
 #_____________________________________________
 def retrive_messages(code , channel_id):
-
-    headers = {'authorization': code}
-    r       = requests.get(f'https://discord.com/api/v9/channels/{channel_id}/messages', headers=headers)
-    jsonn   = json.loads(r.text)
+    messages =  []
+    headers  = {'authorization': code}
+    r        = requests.get(f'https://discord.com/api/v9/channels/{channel_id}/messages', headers=headers)
+    jsonn    = json.loads(r.text)
 
     for value in jsonn:
-        with open(f'Scraped Messages/message_{channel_id}.txt' ,"a", encoding='utf-8') as myfile:
-            user    = value['author']['username']
-            content = value['content']
-            message = f'{user} :\n{content}'
-            myfile.write(message)
-            myfile.write("\n")
-            myfile.write("\n")
+        user    = value['author']['username']
+        content = value['content']
+        message = f'{user} :\n{content}'
+        messages.append(message)
+
+    messages.reverse()
+    for message in messages:
+            with open(f'Scraped Messages/message_{channel_id}.txt' ,"a", encoding='utf-8') as myfile:
+                myfile.write(message)
+                myfile.write("\n")
+                myfile.write("\n")
+
 #__________________________________________________
 
 
@@ -39,6 +44,9 @@ def index():
 
     else:
         return render_template('index.html')
+
+
+#__________________________________________________
 
 if __name__ == '__main__':
     app.run( debug = True)
