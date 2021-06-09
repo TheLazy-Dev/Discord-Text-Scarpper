@@ -23,4 +23,17 @@
 -  Run
 -  Sit back and relax you will get the message into your file
 
+## GUI Support
+
+- Run app.py
+
+- Open http://127.0.0.1:5000/ in any browser
+
+- Enter the Authorization token & Channel ID in the required field
+
+- Click submit
+
+- <img width="662" alt="get authorizations" src="https://github.com/Ozzey/Discord-Text-Scarpper/blob/master/assets/gui_main.png">
+
+
 # Do Star the Repo and Follow for More 🤭

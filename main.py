@@ -8,7 +8,7 @@ def retrive_messages(channel_id):
     r = requests.get(f'https://discord.com/api/v9/channels/{channel_id}/messages', headers=headers)
     jsonn = json.loads(r.text)
     for value in jsonn:
-        with open("{Path/to/PreExisting/fileName.txt}","a") as myfile:
+       with open(f'message_{channel_id}.txt' ,"a", encoding='utf-8') as myfile:
             myfile.write(value['content'])
             myfile.write("\n")
     
